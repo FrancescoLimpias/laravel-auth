@@ -17,15 +17,26 @@ use Mockery\Undefined;
 |
 */
 
+// Post Index
 Route::get('/', function () {
     return view('welcome', ["posts" => Post::all()->sortBy("project_date", null, true)]);
 });
-
+// Post Show
 Route::get('/post/{post}', [PostController::class, 'show'])->name('post.show');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(["auth"])
+->name("admin.")
+->prefix("admin")
+->group(function(){
+
+    // Dashboard
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
+
+    Route::get('/PostEditor', [PostController::class, "index"])->name('post_editor.index');
+
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
