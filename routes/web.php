@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,8 @@ use Mockery\Undefined;
 Route::get('/', function () {
     return view('welcome', ["posts" => Post::all()->sortBy("project_date", null, true)]);
 });
+
+Route::get('/post/{post}', [PostController::class, 'show'])->name('post.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
