@@ -31,4 +31,6 @@
                 accusamus dolores!</p>
         </div>
     </div>
+
+    @include('components.gallery')
 @endsection
