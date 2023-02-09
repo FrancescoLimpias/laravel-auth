@@ -5,24 +5,26 @@
 
     <ul>
         @foreach ($posts as $post)
-            <li id="post{{ $post["id"] }}">
-                <h4>
-                    {{ $post["title"] }}
-                </h4>
-                <span class="date">
-                    {{ $post["project_date"] }}
-                </span>
-                <img src="{{ $post["img"] }}" alt="">
-                <span class="tags">
-                    tags: 
-                </span>
+            <li id="post{{ $post['id'] }}">
+                <a href="{{ route('post.show', $post) }}">
+                    <h4>
+                        {{ $post['title'] }}
+                    </h4>
+                    <span class="date">
+                        {{ $post['project_date'] }}
+                    </span>
+                    <img src="{{ $post['img'] }}" alt="">
+                    <span class="tags">
+                        tags:
+                    </span>
+                </a>
             </li>
 
             <script>
                 {
-                    let postEl = document.getElementById("post" + {{$post["id"]}});
+                    let postEl = document.getElementById("post" + {{ $post['id'] }});
                     let tagsEl = postEl.querySelector("span.tags");
-                    let tagsRaw = "{{ $post["tags"] }}";
+                    let tagsRaw = "{{ $post['tags'] }}";
                     tagsEl.innerHTML += tagsRaw.replaceAll("|", " ");
                 }
             </script>
