@@ -34,7 +34,7 @@ Route::middleware(["auth"])
         return view('admin.dashboard');
     })->name('dashboard');
 
-    Route::get('/PostEditor', [PostController::class, "index"])->name('post_editor.index');
+    Route::get('/PostEditor/{post?}', [PostController::class, "index"])->name('post_editor.index');
 
 });
 

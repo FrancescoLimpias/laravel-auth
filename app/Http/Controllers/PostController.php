@@ -13,9 +13,12 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Post $post = null)
     {
-        return view("admin.post_editor");
+        return view("admin.post_editor", [
+            "active" => $post,
+            "posts" => Post::all()->sortBy("updated_at", null, true)
+        ]);
     }
 
     /**
