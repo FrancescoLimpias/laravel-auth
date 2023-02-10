@@ -1,4 +1,11 @@
 <ul>
+    <li>
+        <a href="{{route('admin.post_editor.index')}}">
+            <h5>
+                New Post
+            </h5>
+        </a>
+    </li>
     @foreach ($posts as $post)
         <li>
             <a href="{{ route("admin.post_editor.index", $post->id) }}">

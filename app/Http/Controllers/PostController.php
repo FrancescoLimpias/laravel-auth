@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Database\Eloquent\Model;
 
 class PostController extends Controller
 {
@@ -39,7 +40,9 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        // Create new post
+        $newPost = Post::create($request->all());
+        return redirect()->route("admin.post_editor.index", $newPost->id);
     }
 
     /**

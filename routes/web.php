@@ -39,6 +39,8 @@ Route::middleware(["auth"])
         Route::get('/PostEditor/{post?}', [PostController::class, "index"])->name('post_editor.index');
         // update
         Route::put('/PostEditor/{post}', [PostController::class, "update"])->name('post_editor.update');
+        // store
+        Route::post('/PostEditor', [PostController::class, "store"])->name('post_editor.store');
     });
 
 Route::middleware('auth')->group(function () {

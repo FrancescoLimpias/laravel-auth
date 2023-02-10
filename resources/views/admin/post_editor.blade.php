@@ -12,6 +12,8 @@
             <div class="editor border col-8">
                 @if ($active != null)
                     @include('components.admin_editor')
+                @else
+                    @include('components.admin_creator')
                 @endif
             </div>
         </div>
