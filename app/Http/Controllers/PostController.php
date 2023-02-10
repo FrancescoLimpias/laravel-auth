@@ -93,6 +93,9 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        // var_dump($post); die();
+        // Post::destroy($post->id);
+        $post->delete();
+        return redirect()->route("admin.post_editor.index");
     }
 }

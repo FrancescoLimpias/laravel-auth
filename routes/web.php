@@ -41,6 +41,8 @@ Route::middleware(["auth"])
         Route::put('/PostEditor/{post}', [PostController::class, "update"])->name('post_editor.update');
         // store
         Route::post('/PostEditor', [PostController::class, "store"])->name('post_editor.store');
+        // delete
+        Route::delete('/PostEditor/{post}', [PostController::class, "destroy"])->name('post_editor.destroy');
     });
 
 Route::middleware('auth')->group(function () {

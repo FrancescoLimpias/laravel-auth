@@ -1,6 +1,6 @@
 <form action="{{ route('admin.post_editor.update', $active->id) }}" method="post">
     @csrf
-    @method("PUT")
+    @method('PUT')
 
     <h3>
         Title
@@ -10,7 +10,7 @@
     <h5>
         Description
     </h5>
-    <textarea name="description"  cols="30" rows="10">{{ $active['description'] }}</textarea>    
+    <textarea name="description" cols="30" rows="10">{{ $active['description'] }}</textarea>
 
     <h5>
         Tags
@@ -20,12 +20,12 @@
     <h5>
         Project Date
     </h5>
-    <input type="date" name="project_date" value="{{ $active['project_date']}}">
+    <input type="date" name="project_date" value="{{ $active['project_date'] }}">
 
     <h5>
         Image URL
     </h5>
-    <input type="url" name="img" value="{{ $active['img']}}">
+    <input type="url" name="img" value="{{ $active['img'] }}">
 
     <h5>
         Repository URL
@@ -36,4 +36,10 @@
     <br>
     <input type="submit" value="Save" class="btn btn-primary">
 
+</form>
+<br>
+<form action="{{ route('admin.post_editor.destroy', $active->id) }}" method="POST">
+    @csrf
+    @method('DELETE')
+    <input type="submit" value="Delete" class="btn btn-danger">
 </form>
