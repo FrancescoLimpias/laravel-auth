@@ -25,18 +25,21 @@ Route::get('/', function () {
 Route::get('/post/{post}', [PostController::class, 'show'])->name('post.show');
 
 Route::middleware(["auth"])
-->name("admin.")
-->prefix("admin")
-->group(function(){
+    ->name("admin.")
+    ->prefix("admin")
+    ->group(function () {
 
-    // Dashboard
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
+        // Dashboard
+        Route::get('/dashboard', function () {
+            return view('admin.dashboard');
+        })->name('dashboard');
 
-    Route::get('/PostEditor/{post?}', [PostController::class, "index"])->name('post_editor.index');
-
-});
+        // PostEditor
+        // index
+        Route::get('/PostEditor/{post?}', [PostController::class, "index"])->name('post_editor.index');
+        // update
+        Route::put('/PostEditor/{post}', [PostController::class, "update"])->name('post_editor.update');
+    });
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -44,4 +47,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

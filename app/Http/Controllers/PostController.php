@@ -73,7 +73,13 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $post->update($request->all());
+
+        return redirect()->route("admin.post_editor.index", $post);
+        /* return view("admin.post_editor", [
+            "active" => $post,
+            "posts" => Post::all()->sortBy("updated_at", null, true)
+        ]); */
     }
 
     /**
