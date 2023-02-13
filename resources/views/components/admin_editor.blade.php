@@ -1,4 +1,4 @@
-<form action="{{ route('admin.post_editor.update', $active->id) }}" method="post">
+<form action="{{ route('admin.post_editor.update', $active->id) }}" method="post" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 
@@ -25,7 +25,8 @@
     <h5>
         Image URL
     </h5>
-    <input type="url" name="img" value="{{ $active['img'] }}">
+    <img src="{{ asset('storage/' . $active['img']) }}" alt="">
+    <input type="file" name="img">
 
     <h5>
         Repository URL

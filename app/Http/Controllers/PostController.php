@@ -84,13 +84,21 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        $post->update($request->all());
+
+        // Store the new image
+        $data = $request->all();
+        $imgPath = Storage::put("uploads", $data["img"]);
+        $data["img"] = $imgPath;
+
+        // Delete old image
+        if(Storage::exists($post["img"])){
+            Storage::delete($post["img"]);
+        }
+
+        // Update post
+        $post->update($data);
 
         return redirect()->route("admin.post_editor.index", $post);
-        /* return view("admin.post_editor", [
-            "active" => $post,
-            "posts" => Post::all()->sortBy("updated_at", null, true)
-        ]); */
     }
 
     /**

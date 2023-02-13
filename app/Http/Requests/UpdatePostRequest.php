@@ -28,7 +28,7 @@ class UpdatePostRequest extends FormRequest
             "description" => "required",
             "tags" => "max:50",
             "project_date" => "required|date|before_or_equal:now",
-            "img" => "nullable|URL",
+            "img" => "nullable|image|mimes:jpg,png,jpeg,gif|max:2048",
             "repo" => "nullable|URL"
         ];
     }
