@@ -1,4 +1,4 @@
-<form action="{{ route('admin.post_editor.store') }}" method="post">
+<form action="{{ route('admin.post_editor.store') }}" method="post" enctype="multipart/form-data">
     @csrf
 
     <h3>
@@ -24,7 +24,8 @@
     <h5>
         Image URL
     </h5>
-    <input type="url" name="img">
+    {{-- <input type="url" name="img"> --}}
+    <input type="file" name="img">
 
     <h5>
         Repository URL

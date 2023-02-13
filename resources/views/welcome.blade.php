@@ -9,6 +9,7 @@
                 </g>
             </svg>
         </div> --}}
+        <img src="{{ asset('storage/landscape.jpg') }}" alt="">
             <h1 class="display-5 fw-bold">
                 Welcome
                 @guest

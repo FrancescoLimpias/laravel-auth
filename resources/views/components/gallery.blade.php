@@ -1,6 +1,6 @@
 <div class="container">
     <h2>
-        Gallery
+        &lt;/My Projects&gt;
     </h2>
 
     <ul>
@@ -13,7 +13,7 @@
                     <span class="date">
                         {{ $post['project_date'] }}
                     </span>
-                    <img src="{{ $post['img'] }}" alt="">
+                    <img src="{{ asset('storage/' . $post['img']) }}" alt="">
                     <span class="tags">
                         tags:
                     </span>
